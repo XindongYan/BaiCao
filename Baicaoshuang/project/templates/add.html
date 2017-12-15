@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .ul {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .a {
+            font-family: '微软雅黑';
+            font-size: 16px;
+        }
+
+        .bottom {
+            position: relative;
+            margin-top: 20%;
+            clear: both;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+        {% for line in user_list %}
+
+            <ul class="ul">
+                <a class="a" href="{{ line.id }}">{{ line.title }}</a><hr />
+            </ul>
+
+        {% endfor %}
+
+    <div>
+        <hr class="bottom" />
+        <p style="text-align: center; color:#bbbec4">Xindong Yan独立完成&nbsp&nbsp&nbsp(*由Bootstrap提供部分技术支持)</p>
+    </div>
+
+</body>
+</html>

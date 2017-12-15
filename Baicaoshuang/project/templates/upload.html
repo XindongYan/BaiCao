@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .content {
+            width: 60%;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form action="/file" method="post">
+    {% csrf_token %}
+        <div class="content">
+            <input style="width:80%; height:30px;" type="text" name="title"><br /><br />
+            <textarea name="content"></textarea>
+            <script type="text/javascript">CKEDITOR.replace('question');</script>
+        </div>
+        <input type="submit" value="上传">
+    </form>
+
+    <script src="/editor/kindeditor-all.js"></script>
+    <script src="editor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="myapp/ckeditor/ckeditor.js"></script>
+
+</body>
+</html>

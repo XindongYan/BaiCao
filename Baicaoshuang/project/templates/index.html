@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <style>
+        .content {
+            height: auto;
+            width: 50%;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid #dddee1;
+        }
+        p {
+            margin: 30px;
+        }
+        #mask{
+            background-color:#ccc;
+            opacity:0.5;
+            filter: alpha(opacity=50); 
+            position:absolute; 
+            left:0;
+            top:0;
+            z-index:1000;
+	    }
+        .submit {
+            background: #2d8cf0;
+            border: none;
+            height: 30px;
+            width: 100px;
+            color: #fff;
+            border-radius: 6px;
+        }
+        .loginCon input {
+            height: 30px;
+            border-radius: 5px;
+            border:0.5px solid #dddee1;
+            margin-top: 5%;
+        }
+        .logininfo {
+            margin-top: 27px;
+        }
+        .info {
+            margin-top: 60px;
+        }
+        .info input {
+            margin-top: 8%;
+        }
+        #box {
+            height: 200px;
+            width: 90%;
+            border: 1px solid #5cadff;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        .box-content {
+            height: 198px;
+            width: 5px;
+            background: #2d8cf0;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="jumbotron" style="width:90%; margin: 0 auto; margin-top: 10%">
+        <div class="container">
+            <div class="page-header">
+                <h1>新Demo基于Django框架 <small>alpha-α v1.5</small></h1>
+            </div>
+            <p>新版本改善了用户体验,页面更加友好的同时更换了数据库提升了安全性</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">查看更多</a></p>
+        </div>
+    </div>
+
+    <!--<div id="box">
+        <div class="box-content">
+
+        </div>
+    </div>-->
+
+    <script>
+        function openNew(){
+            //获取页面的高度和宽度
+            var sWidth = document.body.scrollWidth;
+            var sHeight = document.body.scrollHeight;
+
+            //获取页面的可视区域的高度和宽度
+            var wHeight = document.documentElement.clientHeight;
+
+            var Mask = document.createElement("div")
+                Mask.id = "mask"
+                Mask.style.height = sHeight + "px"
+                Mask.style.width = sWidth + "px"
+                document.body.appendChild(Mask)      
+
+            var Login = document.createElement("div")
+                Login.id = "login"
+                Login.innerHTML = "<form method='post'>{% csrf_token %}<div class='loginCon'><div class='logininfo'><label>用户名: &nbsp&nbsp&nbsp&nbsp&nbsp</label><input type='text' name='username'><br /><label>邮箱： &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type='text' name='email'><br /><label>密码： &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type='password' name='password'><br /><label>确认密码：</label><input type='password' name='re_password'><br /><input class='submit' type='submit' value='注册'></div></div></form>"
+                document.body.appendChild(Login) 
+
+            Mask.onclick = () => {
+            document.body.removeChild(Login)
+            document.body.removeChild(Mask)
+            }
+        }
+
+        function ok(){
+            //获取页面的高度和宽度
+            var sWidth = document.body.scrollWidth;
+            var sHeight = document.body.scrollHeight;
+
+            //获取页面的可视区域的高度和宽度
+            var wHeight = document.documentElement.clientHeight;
+
+            var Mask = document.createElement("div")
+                Mask.id = "mask"
+                Mask.style.height = sHeight + "px"
+                Mask.style.width = sWidth + "px"
+                document.body.appendChild(Mask)
+
+            // var Login = document.getElementById("content")            
+
+            var Login = document.createElement("div")
+                Login.id = "login"
+                Login.innerHTML = "<form action='/login' method='post'>{% csrf_token %}<div class='loginCon'><div class='info'><label>用户名: &nbsp&nbsp&nbsp&nbsp&nbsp</label><input type='text' name='username'><br /><label>密码： &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type='password' name='password'><br /><input class='submit' type='submit' value='登陆'></div></div></form>"
+                document.body.appendChild(Login) 
+
+            Mask.onclick = () => {
+            document.body.removeChild(Login)
+            document.body.removeChild(Mask)
+            }
+        }
+        
+        var registered = document.getElementById('registered')   
+
+        registered.onclick = () => {
+            openNew()
+            return false
+        }
+
+        var login = document.getElementById('login')
+
+        login.onclick = () => {
+            ok()
+            return false
+        }
+    </script>
+</body>
+</html>
